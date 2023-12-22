@@ -337,8 +337,75 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  function setArr(len, fill) {
+    const arr = [];
+    for (let i = 0; i < len; i += 1) {
+      arr[i] = fill;
+    }
+    return arr;
+  }
+  const matrix = [];
+
+  for (let i = 0; i < size; i += 1) {
+    matrix[i] = setArr(size, '');
+  }
+
+  const allLen = size * size;
+  let right = 0;
+  let down = size - 1;
+  let left = size - 1;
+  let up = 0;
+  let direction = 'right';
+
+  for (let i = 1; i <= allLen; i += 1) {
+    if (direction === 'right') {
+      for (let y = 0; y < size; y += 1) {
+        if (!matrix[right][y]) {
+          matrix[right][y] = i;
+          i += 1;
+        }
+      }
+      right += 1;
+      direction = 'down';
+    }
+
+    if (direction === 'down') {
+      for (let y = 0; y < size; y += 1) {
+        if (!matrix[y][down]) {
+          matrix[y][down] = i;
+          i += 1;
+        }
+      }
+      down -= 1;
+      direction = 'left';
+    }
+
+    if (direction === 'left') {
+      for (let y = 0; y < size; y += 1) {
+        if (!matrix[left][size - 1 - y]) {
+          matrix[left][size - 1 - y] = i;
+          i += 1;
+        }
+      }
+      left -= 1;
+      direction = 'up';
+    }
+
+    if (direction === 'up') {
+      for (let y = 0; y < size; y += 1) {
+        if (!matrix[size - 1 - y][up]) {
+          matrix[size - 1 - y][up] = i;
+          i += 1;
+        }
+      }
+      up += 1;
+      i -= 1;
+      direction = 'right';
+    }
+  }
+
+  return matrix;
 }
 
 /**
