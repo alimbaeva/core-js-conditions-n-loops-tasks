@@ -360,7 +360,7 @@ function getSpiralMatrix(size) {
 
   for (let i = 1; i <= allLen; i += 1) {
     if (direction === 'right') {
-      for (let y = 0; y < size; y += 1) {
+      for (let y = 0; y <= down; y += 1) {
         if (!matrix[right][y]) {
           matrix[right][y] = i;
           i += 1;
@@ -371,7 +371,7 @@ function getSpiralMatrix(size) {
     }
 
     if (direction === 'down') {
-      for (let y = 0; y < size; y += 1) {
+      for (let y = right; y <= down; y += 1) {
         if (!matrix[y][down]) {
           matrix[y][down] = i;
           i += 1;
@@ -382,9 +382,9 @@ function getSpiralMatrix(size) {
     }
 
     if (direction === 'left') {
-      for (let y = 0; y < size; y += 1) {
-        if (!matrix[left][size - 1 - y]) {
-          matrix[left][size - 1 - y] = i;
+      for (let y = down; y >= 0; y -= 1) {
+        if (!matrix[left][y]) {
+          matrix[left][y] = i;
           i += 1;
         }
       }
@@ -393,7 +393,7 @@ function getSpiralMatrix(size) {
     }
 
     if (direction === 'up') {
-      for (let y = 0; y < size; y += 1) {
+      for (let y = 0; y < size - right; y += 1) {
         if (!matrix[size - 1 - y][up]) {
           matrix[size - 1 - y][up] = i;
           i += 1;
