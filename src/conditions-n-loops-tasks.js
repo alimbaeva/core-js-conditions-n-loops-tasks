@@ -351,6 +351,25 @@ function rotateMatrix(/* matrix */) {
 function sortByAsc(/* arr */) {
   throw new Error('Not implemented');
 }
+// function sortByAsc(arr) {
+//   if (arr.length <= 1) {
+//     return arr;
+//   }
+
+//   const start = arr[0];
+//   const left = [];
+//   const right = [];
+
+//   for (let i = 1; i < arr.length; i += 1) {
+//     if (arr[i] <= start) {
+//       left.push(arr[i]);
+//     } else {
+//       right.push(arr[i]);
+//     }
+//   }
+
+//   return [...sortByAsc(left), start, ...sortByAsc(right)];
+// }
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -369,8 +388,23 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  const len = str.length;
+  let coppyStr = str;
+  let result = '';
+
+  for (let iter = 0; iter < iterations; iter += 1) {
+    let right = '';
+    let left = '';
+    for (let i = 0; i < len; i += 1) {
+      if (i % 2 === 0) left += coppyStr[i];
+      if (i % 2 !== 0) right += coppyStr[i];
+    }
+    result = `${left}${right}`;
+    coppyStr = result;
+  }
+
+  return result;
 }
 
 /**
