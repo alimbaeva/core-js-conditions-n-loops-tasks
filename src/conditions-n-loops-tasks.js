@@ -428,16 +428,8 @@ function rotateMatrix(matrix) {
   const mainMatrix = [];
   const lenMat = matrix.length;
 
-  function setArr(len) {
-    const arr = [];
-    for (let i = 0; i < len.length; i += 1) {
-      arr[i] = len[i];
-    }
-    return arr;
-  }
-
   for (let i = 0; i < lenMat; i += 1) {
-    mainMatrix[i] = setArr(matrix[i]);
+    mainMatrix[i] = [...matrix[i]];
   }
 
   for (let i = lenMat - 1; i >= 0; i -= 1) {
