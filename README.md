@@ -13,9 +13,9 @@ The task is to implement functions on different Core JS topics. This module requ
 ## Prepare and test
 
 1. Install Node.js
-2. Fork this repository: https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks
-3. Clone your newly created repo: `https://github.com/<%your_github_username%>/coreJs-conditions-n-loops-tasks/`
-4. Go to folder `coreJs-conditions-n-loops-tasks`
+2. Fork this repository: https://github.com/rolling-scopes-school/core-js-conditions-n-loops-tasks
+3. Clone your newly created repo: `https://github.com/<%your_github_username%>/core-js-conditions-n-loops-tasks/`
+4. Go to folder `core-js-conditions-n-loops-tasks`
 5. To install all dependencies use `npm install`
 6. Each task is usually a regular function:
 
@@ -61,10 +61,11 @@ The task is to implement functions on different Core JS topics. This module requ
 
 ## Submit to [rs app](https://app.rs.school/)
 
-1. Open [rs app](https://app.rs.school/) and login
-2. Go to [submit task page](https://app.rs.school/course/submit-task?course=rs-2023-q4)
-3. Select your task (Core JS Conditions-n-loops)
-4. Press submit button and enjoy
+1. Commit and push your solutions to your fork
+2. Open [rs app](https://app.rs.school/) and login
+3. Go to [submit task page](https://app.rs.school/course/submit-task?course=rs-2023-q4)
+4. Select your task (Core JS Conditions-n-loops)
+5. Press submit button and enjoy
 
 ## Notes
 
