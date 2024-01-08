@@ -463,10 +463,10 @@ function rotateMatrix(matrix) {
 function sortByAsc(/* arr */) {
   throw new Error('Not implemented');
 }
-// function sortByAsc(arr) {
 //   if (arr.length <= 1) {
 //     return arr;
 //   }
+//   let coppyArr = arr;
 
 //   const start = arr[0];
 //   const left = [];
@@ -479,9 +479,8 @@ function sortByAsc(/* arr */) {
 //       right.push(arr[i]);
 //     }
 //   }
-
-//   return [...sortByAsc(left), start, ...sortByAsc(right)];
-// }
+//   coppyArr = [...sortByAsc(left), start, ...sortByAsc(right)];
+//   return coppyArr;
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -536,8 +535,49 @@ function shuffleChar(str, iterations) {
  * @param {number} number The source number
  * @returns {number} The nearest larger number, or original number if none exists.
  */
-function getNearestBigger(/* number */) {
-  throw new Error('Not implemented');
+function getNearestBigger(number) {
+  const arrNum = [];
+  let num = number;
+  while (num) {
+    arrNum.unshift(num % 10);
+    num = Math.floor(num / 10);
+  }
+  let changeNumInd = null;
+  let changeNumInd2 = null;
+  for (let i = arrNum.length - 2; i >= 0; i -= 1) {
+    if (arrNum[i] < arrNum[i + 1]) {
+      changeNumInd = i;
+      break;
+    }
+  }
+
+  if (changeNumInd === null) return number;
+
+  for (let i = arrNum.length - 1; i >= changeNumInd + 2; i -= 1) {
+    if (arrNum[i] > arrNum[changeNumInd]) {
+      changeNumInd2 = i;
+      break;
+    }
+  }
+  if (changeNumInd2 === null) changeNumInd2 = changeNumInd + 1;
+
+  const head = [];
+  let tail = [];
+  for (let i = 0; i < arrNum.length; i += 1) {
+    if (i < changeNumInd) head.push(arrNum[i]);
+    if (i === changeNumInd) head.push(arrNum[changeNumInd2]);
+    if (i > changeNumInd && i !== changeNumInd2) tail.push(arrNum[i]);
+    if (i === changeNumInd2) tail.push(arrNum[changeNumInd]);
+  }
+
+  tail = tail.sort((a, b) => a - b);
+
+  const arr = [...head, ...tail];
+  let res2 = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    res2 = res2 * 10 + arr[i];
+  }
+  return res2;
 }
 
 module.exports = {
